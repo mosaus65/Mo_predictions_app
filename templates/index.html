@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mo Predictions | Football Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h2>MO <span>PREDICTIONS</span></h2>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#fixtures">Fixtures</a>
+                <a href="#predictions">Predictions</a>
+                <a href="#about">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Mo Predictions</h1>
+            <p>Football insights, match analysis and smarter predictions.</p>
+            <a href="#fixtures" class="btn">Explore Matches</a>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3>{{ fixtures|length }}</h3>
+                <p>Fixtures Displayed</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>{{ predictions|length }}</h3>
+                <p>Predictions</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>{{ leagues|length }}</h3>
+                <p>Competitions</p>
+            </div>
+        </section>
+
+        <section id="fixtures" class="content-section">
+            <h2>Football Fixtures</h2>
+
+            <form method="GET" action="/">
+                <label for="league">Filter by competition:</label>
+
+                <select name="league" id="league">
+                    <option value="">All Leagues</option>
+
+                    {% for league in leagues %}
+                        <option value="{{ league }}"
+                            {% if selected_league == league %}selected{% endif %}>
+                            {{ league }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Filter Matches</button>
+            </form>
+
+            {% if fixtures %}
+                {% for match in fixtures %}
+                    <div class="fixture-card">
+
+                        {% if match.match_date < today %}
+                            <p class="match-status">Historical Match</p>
+                        {% else %}
+                            <p class="match-status">Upcoming Match</p>
+                        {% endif %}
+
+                        <h3>
+                            {{ match.home_team }} vs {{ match.away_team }}
+                        </h3>
+
+                        <p>League: {{ match.league }}</p>
+                        <p>Date: {{ match.match_date }}</p>
+                        <p>Time: {{ match.match_time }}</p>
+
+                        <h4>Match Predictions</h4>
+
+                        {% if match.id in predictions %}
+                            <p>
+                                Home Win:
+                                {{ predictions[match.id].home_win }}%
+                            </p>
+
+                            <p>
+                                Draw:
+                                {{ predictions[match.id].draw }}%
+                            </p>
+
+                            <p>
+                                Away Win:
+                                {{ predictions[match.id].away_win }}%
+                            </p>
+                        {% else %}
+                            <p>Prediction not available.</p>
+                        {% endif %}
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No fixtures available for this competition.</p>
+            {% endif %}
+        </section>
+
+        <section id="predictions" class="content-section">
+            <h2>Latest Predictions</h2>
+            <p>
+                Our prediction engine displays match predictions
+                based on available football information.
+            </p>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>About Mo Predictions</h2>
+            <p>
+                A football analytics platform for match statistics,
+                fixture information and predictions.
+            </p>
+            <p>
+                Predictions are estimates, not guaranteed match results.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mo Predictions. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

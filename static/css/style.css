@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navigation */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #111c2e;
+}
+
+.navbar h2 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.navbar h2 span {
+    color: #22c55e;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #22c55e;
+}
+
+/* Hero section */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #111c2e, #163b31);
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #cbd5e1;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #22c55e;
+    color: #07120b;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #16a34a;
+}
+
+/* Statistics */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px 8%;
+}
+
+.stat-card {
+    background: #172338;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #26364d;
+}
+
+.stat-card h3 {
+    color: #22c55e;
+    font-size: 32px;
+}
+
+.stat-card p {
+    color: #cbd5e1;
+}
+
+/* Content sections */
+
+.content-section {
+    margin: 30px 8%;
+    padding: 35px;
+    background: #172338;
+    border-radius: 10px;
+    border: 1px solid #26364d;
+}
+
+.content-section h2 {
+    color: #22c55e;
+    margin-bottom: 15px;
+}
+
+.content-section p {
+    color: #cbd5e1;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #111c2e;
+    color: #94a3b8;
+    margin-top: 50px;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 70px 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        padding: 25px 5%;
+    }
+
+    .content-section {
+        margin: 20px 5%;
+        padding: 25px;
+    }
+}
+
+
+.fixture-card {
+    background: #111c2e;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #26364d;
+}
+
+.fixture-card h3 {
+    color: #22c55e;
+    margin-bottom: 10px;
+}
+
+.fixture-card p {
+    color: #cbd5e1;
+    margin: 5px 0;
+}
+
